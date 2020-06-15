@@ -243,9 +243,7 @@ func (rd *RedisStorage) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 }
 
 func (rd *RedisStorage) Provision(ctx caddy.Context) error {
-	rd.Logger = ctx.Logger(rd).Sugar()
 	rd.getConfigValue()
-	rd.Logger.Info("TLS Storage are using Redis, on " + rd.Address)
 	if err := rd.buildRedisClient(); err != nil {
 		return err
 	}
